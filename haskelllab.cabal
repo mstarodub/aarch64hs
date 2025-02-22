@@ -1,0 +1,78 @@
+cabal-version: 3.4
+name:          haskelllab
+version:       0.0.1
+
+common ghc-settings
+    ghc-options:
+        -haddock -Wall -Wcompat -Wredundant-constraints -Wno-type-defaults
+        -Wincomplete-record-updates -Wincomplete-uni-patterns -Widentities
+
+    default-language: Haskell2010
+
+common extensions
+    default-extensions:
+        ApplicativeDo
+        BinaryLiterals
+        BlockArguments
+        ConstrainedClassMethods
+        ConstraintKinds
+        DataKinds
+        DeriveGeneric
+        DeriveTraversable
+        DerivingVia
+        EmptyCase
+        ExistentialQuantification
+        ExplicitForAll
+        FlexibleContexts
+        FlexibleInstances
+        FunctionalDependencies
+        GADTs
+        InstanceSigs
+        KindSignatures
+        LexicalNegation
+        MonadComprehensions
+        MultiParamTypeClasses
+        NamedWildCards
+        NoDatatypeContexts
+        NoStarIsType
+        NoTraditionalRecordSyntax
+        NumericUnderscores
+        OverloadedStrings
+        ParallelListComp
+        PartialTypeSignatures
+        PolyKinds
+        PostfixOperators
+        QuantifiedConstraints
+        RankNTypes
+        ScopedTypeVariables
+        StandaloneDeriving
+        StandaloneKindSignatures
+        TupleSections
+        TypeApplications
+        TypeFamilies
+        TypeOperators
+
+--         UnicodeSyntax
+
+common imports
+    -- mixins:          base hiding (Prelude), relude (Relude as Prelude)
+    build-depends:
+        , base
+        , bytestring
+        , finite-typelits
+        , generic-arbitrary
+        , hspec
+        , QuickCheck
+
+--         , unordered-containers
+--         , parsers
+--         , pretty
+--         , vector
+
+executable tst
+    import:         ghc-settings, extensions, imports
+    main-is:        Compiler.hs
+    hs-source-dirs: src
+    other-modules:
+        Aarch64
+        Elf
